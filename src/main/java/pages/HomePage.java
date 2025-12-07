@@ -71,4 +71,19 @@ public class HomePage {
             }
         }
     }
+    //        ham click menu admin
+    public void clickAdminMenu() {
+//            B1: lay list cac menu item trong home page
+        List<WebElement> menuItems = driver.findElements(sidebarMenuNames);
+        for(WebElement menuItem: menuItems) {
+            String text = menuItem.getText().trim();
+            if(text.equals("Admin")) {
+//                LUU Y: vi xpath cua sidebarMenuNames la text
+//                => lay the cha cua text menu (<a></a>)
+                WebElement adminLink = menuItem.findElement(By.xpath("./ancestor::a"));
+                adminLink.click();
+                break;
+            }
+        }
+    }
 }

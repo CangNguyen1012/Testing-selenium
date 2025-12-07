@@ -39,16 +39,20 @@ public class BaseTest {
         }
 
         extentTest = ExtendReportManager.createTest(testName, testDescription);
+        extentTest.info("Starting test: " + testName);
 
 //        B1: Cau hinh ChromeDiver
         WebDriverManager.chromedriver().setup();
+        extentTest.info("Chrome driver setup");
 
 //        B2: Cau hinh cac tuy chon
+        extentTest.info("Chrome setup full screen");
         ChromeOptions options = new ChromeOptions();
 //         Mo chrome o che do full man hinh
         options.addArguments("--start-maximized");
 
 //        B3: khoi tao ChromeDiver
+        extentTest.info("Creating ChromeDriver");
         driver = new ChromeDriver(options);
 //        B4: setting thoi gian doi khoi tao Chrome
 //        neu chrome tao som hon 10s => tiep tuc ngay
