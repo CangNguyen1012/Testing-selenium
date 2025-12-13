@@ -38,4 +38,6 @@ build/
 ### Mac OS ###
 .DS_Store
 /test-output/
-/src/main/resources/config.properties
+
+# Ignore local config (keep config.properties.example committed)
+src/main/resources/config.properties

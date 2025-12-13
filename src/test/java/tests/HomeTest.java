@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import pages.AdminPage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.MyInfoPage;
 import utils.BaseTest;
 import utils.ConfigReader;
 
@@ -102,6 +103,41 @@ public class HomeTest extends BaseTest {
             extentTest.fail("Khong co data trong table");
             Assert.fail("Khong co data trong table");
         }
+
+        Assert.assertTrue(true);
+    }
+
+//    Test case 3: Upload avatar
+    @Test
+    public void testUploadAvatar() throws Exception {
+//        B1: Login
+        extentTest.info("B1: Login vao he thong");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login(VALID_USERNAME, VALID_PASSWORD);
+        Thread.sleep(3000);
+
+//        B2: click vao My Info menu o page Home
+        extentTest.info("B2: Click vao menu My Info");
+        HomePage homePage = new HomePage(driver);
+        homePage.clickMyInfoMenu();
+        Thread.sleep(2000);
+
+//        B3: click vao avatar
+        extentTest.info("B3: Click vao avatar");
+        MyInfoPage myInfoPage = new MyInfoPage(driver);
+        myInfoPage.clickAvatar();
+        Thread.sleep(2000);
+
+//        B4: click vao button upload
+        extentTest.info("B4: Click vao button upload");
+        myInfoPage.clickUploadBtn();
+        Thread.sleep(2000);
+
+//        B5: upload file
+        extentTest.info("B5: Upload file");
+        String filePath = System.getProperty("user.home") + "/Downloads/images.jfif";
+        myInfoPage.uploadFile(filePath);
+        Thread.sleep(2000);
 
         Assert.assertTrue(true);
     }

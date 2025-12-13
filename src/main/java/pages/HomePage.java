@@ -86,4 +86,19 @@ public class HomePage {
             }
         }
     }
+
+    public void clickMyInfoMenu() {
+//            B1: lay list cac menu item trong home page
+        List<WebElement> menuItems = driver.findElements(sidebarMenuNames);
+        for(WebElement menuItem: menuItems) {
+            String text = menuItem.getText().trim();
+            if(text.equals("My Info")) {
+//                LUU Y: vi xpath cua sidebarMenuNames la text
+//                => lay the cha cua text menu (<a></a>)
+                WebElement adminLink = menuItem.findElement(By.xpath("./ancestor::a"));
+                adminLink.click();
+                break;
+            }
+        }
+    }
 }
